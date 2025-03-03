@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="img/favicon (2).jpg" rel="icon">
+    <title>Compra de Plan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        .form-container {
+            flex: 1;
+            padding-right: 20px;
+        }
+        .image-container {
+            flex: 1;
+            text-align: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        h1 {
+            color: #ff6600;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #ff6600;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #e65c00;
+        }
+        .price-display {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Datos de Compra</h1>
+            <form id="payment-form">
+                <div class="mb-3">
+                    <label for="plan" class="form-label">Selecciona un Plan</label>
+                    <select class="form-control" id="plan" name="plan" required>
+                        <option value="10">Plan Básico - 29€</option>
+                        <option value="20">Plan Avanzado - 59€</option>
+                        <option value="30">Plan Empresarial - 99€</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre Completo</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Dirección</label>
+                    <input type="text" class="form-control" id="address" name="address" required>
+                </div>
+                <div class="mb-3">
+                    <label for="card" class="form-label">Número de Tarjeta</label>
+                    <input type="text" class="form-control" id="card" name="card" required>
+                </div>
+                <div class="price-display" id="price-display">Total a pagar: 29€</div>
+                <button type="submit" class="btn btn-primary w-100">Pagar</button>
+            </form>
+        </div>
+        <div class="image-container">
+            <img src="img/tarjeta.jpg" alt="Imagen del Plan">
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('plan').addEventListener('change', function() {
+            const price = this.value;
+            document.getElementById('price-display').textContent = `Total a pagar: $${price}`;
+        });
+        
+        document.getElementById('payment-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const price = document.getElementById('plan').value;
+            alert(`Pago de $${price} procesado exitosamente. ¡Gracias por tu compra!`);
+            window.location.href = 'index.html';
+        });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
